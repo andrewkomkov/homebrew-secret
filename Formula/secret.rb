@@ -1,8 +1,8 @@
 class Secret < Formula
   desc "Keychain and Secure Enclave store for secrets an agent uses by name"
   homepage "https://github.com/andrewkomkov/secret-cli"
-  url "https://github.com/andrewkomkov/secret-cli/archive/refs/tags/v1.0.0.tar.gz"
-  sha256 "07d68b2dc530c88a472ba22104c4e254fa6da5905e3e8e71fa2625d37a0bcde9"
+  url "https://github.com/andrewkomkov/secret-cli/archive/refs/tags/v1.1.0.tar.gz"
+  sha256 "f63d3f4e85c8facf9639f0093bcb1a32156893d0ccdbd93d756667eeed59c61d"
   license "MIT"
 
   depends_on :macos
@@ -29,7 +29,8 @@ class Secret < Formula
       Create the keychain:
         secret init
 
-      Claude Code hook and the menu bar app SecretBar (SecretBar needs Xcode):
+      Claude Code: the hook in ~/.claude/settings.json and the agent rules in
+      ~/.claude/CLAUDE.md. Optional: the menu bar app SecretBar (it needs Xcode).
         "$(brew --prefix secret)/libexec/install.sh" --claude-hook --app
 
       Without an Apple Development certificate the helpers are signed ad-hoc. After an
