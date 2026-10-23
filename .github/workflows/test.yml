@@ -1,0 +1,28 @@
+name: brew test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: macos-15
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Tap this checkout
+        run: brew tap andrewkomkov/secret "$GITHUB_WORKSPACE"
+
+      - name: Install
+        run: brew install --build-from-source andrewkomkov/secret/secret
+
+      - name: Test
+        run: brew test andrewkomkov/secret/secret
+
+      - name: Audit
+        run: brew audit --strict andrewkomkov/secret/secret
