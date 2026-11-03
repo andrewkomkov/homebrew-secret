@@ -1,8 +1,8 @@
 class Secret < Formula
   desc "Keychain and Secure Enclave store for secrets an agent uses by name"
   homepage "https://github.com/andrewkomkov/secret-cli"
-  url "https://github.com/andrewkomkov/secret-cli/archive/refs/tags/v1.2.0.tar.gz"
-  sha256 "a2874eb94bf72abe80adc0993bc68d8504feae3a000e4a54ff66c001200c1c37"
+  url "https://github.com/andrewkomkov/secret-cli/archive/refs/tags/v1.3.0.tar.gz"
+  sha256 "c9611f942b7bfa9346bfd19c8016262c19569af6cc6d8ba404457787dbf0ed0c"
   license "MIT"
 
   depends_on :macos
@@ -13,6 +13,9 @@ class Secret < Formula
 
     # Helper of the Secure Enclave store; signed by an Apple Development certificate if there is one.
     system libexec/"helper/store/build.sh", "Release", libexec/"build"
+
+    # Reader of Safari cookies for `secret cookie` (027).
+    system libexec/"helper/cookies/build.sh", "Release", libexec/"build"
 
     # Helper of Touch ID for the file keychain.
     auth = libexec/"build/secret-auth"
